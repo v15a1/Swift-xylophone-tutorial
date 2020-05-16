@@ -17,6 +17,23 @@ class ViewController: UIViewController {
         let buttonLabel : String = sender.currentTitle!
         //passing the value to the playsound function
         playSound(soundName: buttonLabel)
+        
+        
+        //BOSS CHALLENGE
+        
+        //changing the opacity
+        sender.alpha = 0.5
+        
+        //printing "Hello" after 2 seconds
+        print("Hello")
+        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+            print("Hello after 2 seconds")
+        }
+        
+        //resetting opacity of the button after clicking
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            sender.alpha = 1
+        })
     }
     
     //function to play the sound
@@ -27,7 +44,7 @@ class ViewController: UIViewController {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer.play()
-//            print("played the sound")
+            //            print("played the sound")
         } catch {
             print("Failed to play the sound")
         }
